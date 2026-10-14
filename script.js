@@ -4,25 +4,25 @@
 const LEVELS = {
   easy: {
     name: "Mudah",
-    interval: 1500,
+    interval: 2000,
     points: 5,
     grades: { S: 12, A: 9, B: 6, C: 3 },
   },
   normal: {
     name: "Normal",
-    interval: 800,
+    interval: 1500,
     points: 10,
     grades: { S: 10, A: 8, B: 5, C: 3 },
   },
   hard: {
     name: "Sulit",
-    interval: 400,
+    interval: 800,
     points: 15,
     grades: { S: 8, A: 6, B: 4, C: 2 },
   },
   extreme: {
     name: "Ekstrem",
-    interval: 200,
+    interval: 400,
     points: 25,
     grades: { S: 6, A: 5, B: 3, C: 2 },
   },
