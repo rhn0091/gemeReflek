@@ -1,30 +1,31 @@
 "use strict";
 
 /* PENGATURAN LEVEL */
+
 const LEVELS = {
   easy: {
     name: "Mudah",
     interval: 2000,
     points: 5,
-    grades: { S: 12, A: 9, B: 6, C: 3 },
+    grades: { S: 20, A: 15, B: 10, C: 5 },
   },
   normal: {
     name: "Normal",
     interval: 1500,
     points: 10,
-    grades: { S: 10, A: 8, B: 5, C: 3 },
+    grades: { S: 25, A: 18, B: 12, C: 6 },
   },
   hard: {
     name: "Sulit",
     interval: 800,
     points: 15,
-    grades: { S: 8, A: 6, B: 4, C: 2 },
+    grades: { S: 30, A: 22, B: 15, C: 8 },
   },
   extreme: {
     name: "Ekstrem",
     interval: 400,
     points: 25,
-    grades: { S: 6, A: 5, B: 3, C: 2 },
+    grades: { S: 40, A: 30, B: 20, C: 10 },
   },
 };
 
