@@ -1,122 +1,134 @@
-
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tangkap Kotak - Arcade Game</title>
+    <meta name="theme-color" content="#0f172a">
+    <title>Tangkap Kotak</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
+
 <body>
-    <main class="container">
-        <header>
+    <main class="container" id="menuScreen">
+        <header class="hero">
             <div class="logo">🎯</div>
-            <h1>TANGKAP KOTAK</h1>
-            <p class="subtitle">Uji refleksmu dan jadilah yang terbaik!</p>
+            <h1>Tangkap Kotak</h1>
+            <p>Tangkap kotaknya sebanyak mungkin sebelum waktunya habis!</p>
         </header>
 
-        <section class="panel settings">
-            <label for="nama">Nama Pemain</label>
-            <input id="nama" type="text" maxlength="20"
-                   placeholder="Masukkan nama kamu">
+        <section class="panel">
+            <label for="namaPemain">Nama pemain</label>
+            <input type="text" id="namaPemain" maxlength="20" placeholder="Masukkan nama kamu" autocomplete="nickname">
 
-            <label for="level">Pilih Level</label>
-            <select id="level">
-                <option value="easy">Mudah — 3 detik | 5 poin</option>
-                <option value="normal" selected>Normal — 1,5 detik | 10 poin</option>
-                <option value="hard">Sulit — 1 detik | 15 poin</option>
-                <option value="extreme">Ekstrem — 0,5 detik | 25 poin</option>
+            <label for="pilihLevel">Pilih level</label>
+            <select id="pilihLevel">
+                <option value="easy">Mudah</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Sulit</option>
+                <option value="extreme">Ekstrem</option>
             </select>
 
-            <button id="mulai" class="primary" onclick="mulaiGame()">
-                ▶ Mulai Game
-            </button>
-        </section>
-
-        <section class="stats">
-            <div class="stat-card">
-                <span>SKOR</span>
-                <strong id="skor">0</strong>
-            </div>
-            <div class="stat-card">
-                <span>TANGKAPAN</span>
-                <strong id="tangkapan">0</strong>
-            </div>
-            <div class="stat-card">
-                <span>WAKTU</span>
-                <strong><span id="waktu">30</span><small> dtk</small></strong>
-            </div>
-        </section>
-
-        <section class="game-section">
-            <div class="game-heading">
-                <span id="labelLevel">LEVEL NORMAL</span>
-                <span id="nilaiPoin">+10 poin / klik</span>
-            </div>
-
-            <div id="arena">
-                <div id="kotak" onclick="tangkapKotak()"></div>
-                <div id="overlay">
-                    <span>🎮</span>
-                    <p>Tekan Mulai Game untuk bermain</p>
-                </div>
-            </div>
-
-            <p id="pesan" role="status" aria-live="polite">
-                Siapkan refleksmu!
+            <button id="mulaiBtn" class="primary-btn">Mulai Game</button>
+            <p class="instruction">
+                Ketuk kotak yang muncul untuk mendapatkan poin.
+                Semakin tinggi level, semakin cepat kotaknya bergerak.
             </p>
         </section>
 
-        <section class="panel result">
-            <h2>🏆 Hasil Permainan</h2>
-            <div class="grade" id="grade">—</div>
-            <h3 id="namaHasil">Belum ada hasil</h3>
-            <p id="detailHasil">Selesaikan permainan untuk melihat penilaian.</p>
-        </section>
-
-        <section class="panel leaderboard">
-            <div class="leader-header">
-                <div>
-                    <h2>🏆 Leaderboard</h2>
-                    <p>10 pemain dengan skor tertinggi</p>
-                </div>
-                <button id="hapusPeringkat" class="secondary"
-                        onclick="hapusLeaderboard()">
-                    Reset
-                </button>
-            </div>
-
-            <div class="table-wrapper">
+        <section class="leaderboard panel">
+            <h2>🏆 Leaderboard</h2>
+            <p class="leaderboard-note">10 skor terbaik di perangkat ini</p>
+            <div class="table-wrap">
                 <table>
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Pemain</th>
+                            <th>Nama</th>
                             <th>Level</th>
-                            <th>Poin</th>
+                            <th>Skor</th>
                             <th>Grade</th>
                         </tr>
                     </thead>
-                    <tbody id="daftarPeringkat">
+                    <tbody id="leaderboardBody">
                         <tr>
-                            <td colspan="5" class="empty">
-                                Belum ada skor. Jadilah yang pertama!
-                            </td>
+                            <td colspan="5">Belum ada skor. Jadilah yang pertama!</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <p class="note">
-                Peringkat tersimpan di browser ini.
-            </p>
+            <button id="resetLeaderboard" class="secondary-btn">
+                Hapus Leaderboard
+            </button>
         </section>
 
-        <footer>
-            Tangkap kotaknya sebelum berpindah. Semakin sulit levelnya,
-            semakin besar poin yang kamu dapatkan!
-        </footer>
+        <footer>Game Tangkap Kotak · Latihan JavaScript</footer>
     </main>
+
+    <section id="gameScreen" aria-label="Area permainan">
+        <header class="game-header">
+            <div class="hud-item">
+                <span>Skor</span>
+                <strong id="skor">0</strong>
+            </div>
+            <div class="hud-item">
+                <span>Waktu</span>
+                <strong id="waktu">30</strong>
+            </div>
+            <div class="hud-item">
+                <span>Level</span>
+                <strong id="labelLevel">Normal</strong>
+            </div>
+            <button id="keluarBtn" class="exit-btn">✕ Keluar</button>
+        </header>
+
+        <div id="arena">
+            <div id="pesanArena">Bersiaplah!</div>
+            <button id="kotak" aria-label="Tangkap kotak" type="button"></button>
+
+            <div id="countdown" class="overlay">
+                <div class="overlay-card">
+                    <p>Permainan dimulai dalam</p>
+                    <strong id="countdownNumber">3</strong>
+                </div>
+            </div>
+
+            <div id="gameOver" class="overlay hidden">
+                <div class="overlay-card result-card">
+                    <div class="result-icon">🎉</div>
+                    <h2>Permainan Selesai!</h2>
+                    <p id="hasilNama">Pemain</p>
+                    <div class="result-stats">
+                        <div>
+                            <span>Skor</span>
+                            <strong id="hasilSkor">0</strong>
+                        </div>
+                        <div>
+                            <span>Tangkapan</span>
+                            <strong id="hasilTangkap">0</strong>
+                        </div>
+                        <div>
+                            <span>Grade</span>
+                            <strong id="hasilGrade">C</strong>
+                        </div>
+                    </div>
+                    <p id="hasilPesan"></p>
+                    <button id="mainLagiBtn" class="primary-btn">
+                        Main Lagi
+                    </button>
+                    <button id="menuBtn" class="secondary-btn">
+                        Kembali ke Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <p class="game-instruction">
+            Ketuk kotak secepat mungkin untuk mendapatkan poin!
+        </p>
+    </section>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
