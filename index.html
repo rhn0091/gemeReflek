@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangkap Kotak - Arcade Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <div class="logo">🎯</div>
+            <h1>TANGKAP KOTAK</h1>
+            <p class="subtitle">Uji refleksmu dan jadilah yang terbaik!</p>
+        </header>
+
+        <section class="panel settings">
+            <label for="nama">Nama Pemain</label>
+            <input id="nama" type="text" maxlength="20"
+                   placeholder="Masukkan nama kamu">
+
+            <label for="level">Pilih Level</label>
+            <select id="level">
+                <option value="easy">Mudah — 3 detik | 5 poin</option>
+                <option value="normal" selected>Normal — 1,5 detik | 10 poin</option>
+                <option value="hard">Sulit — 1 detik | 15 poin</option>
+                <option value="extreme">Ekstrem — 0,5 detik | 25 poin</option>
+            </select>
+
+            <button id="mulai" class="primary" onclick="mulaiGame()">
+                ▶ Mulai Game
+            </button>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>SKOR</span>
+                <strong id="skor">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>TANGKAPAN</span>
+                <strong id="tangkapan">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>WAKTU</span>
+                <strong><span id="waktu">30</span><small> dtk</small></strong>
+            </div>
+        </section>
+
+        <section class="game-section">
+            <div class="game-heading">
+                <span id="labelLevel">LEVEL NORMAL</span>
+                <span id="nilaiPoin">+10 poin / klik</span>
+            </div>
+
+            <div id="arena">
+                <div id="kotak" onclick="tangkapKotak()"></div>
+                <div id="overlay">
+                    <span>🎮</span>
+                    <p>Tekan Mulai Game untuk bermain</p>
+                </div>
+            </div>
+
+            <p id="pesan" role="status" aria-live="polite">
+                Siapkan refleksmu!
+            </p>
+        </section>
+
+        <section class="panel result">
+            <h2>🏆 Hasil Permainan</h2>
+            <div class="grade" id="grade">—</div>
+            <h3 id="namaHasil">Belum ada hasil</h3>
+            <p id="detailHasil">Selesaikan permainan untuk melihat penilaian.</p>
+        </section>
+
+        <section class="panel leaderboard">
+            <div class="leader-header">
+                <div>
+                    <h2>🏆 Leaderboard</h2>
+                    <p>10 pemain dengan skor tertinggi</p>
+                </div>
+                <button id="hapusPeringkat" class="secondary"
+                        onclick="hapusLeaderboard()">
+                    Reset
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Pemain</th>
+                            <th>Level</th>
+                            <th>Poin</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="daftarPeringkat">
+                        <tr>
+                            <td colspan="5" class="empty">
+                                Belum ada skor. Jadilah yang pertama!
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="note">
+                Peringkat tersimpan di browser ini.
+            </p>
+        </section>
+
+        <footer>
+            Tangkap kotaknya sebelum berpindah. Semakin sulit levelnya,
+            semakin besar poin yang kamu dapatkan!
+        </footer>
+    </main>
+</body>
+</html>

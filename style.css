@@ -1,0 +1,380 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080d1b;
+    --panel: #111a2e;
+    --panel-light: #1a2740;
+    --border: #293853;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --blue: #38bdf8;
+    --purple: #a78bfa;
+    --yellow: #facc15;
+    --red: #fb7185;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 28px 16px;
+}
+
+.container {
+    max-width: 760px;
+    width: 100%;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.logo {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-size: clamp(26px, 5vw, 38px);
+    letter-spacing: 2px;
+    color: var(--blue);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.settings label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #cbd5e1;
+    margin-bottom: 9px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #0b1324;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 18px;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--blue);
+}
+
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.primary {
+    width: 100%;
+    padding: 15px;
+    background: var(--blue);
+    color: #082032;
+    font-size: 16px;
+}
+
+.secondary {
+    background: var(--panel-light);
+    border: 1px solid var(--border);
+    color: #cbd5e1;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 17px 10px;
+    text-align: center;
+}
+
+.stat-card > span {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.stat-card strong {
+    color: var(--blue);
+    font-size: 27px;
+}
+
+.stat-card small {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.game-section {
+    margin-bottom: 24px;
+}
+
+.game-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: var(--purple);
+}
+
+#nilaiPoin {
+    color: var(--yellow);
+}
+
+#arena {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    background:
+        linear-gradient(#1b2940 1px, transparent 1px),
+        linear-gradient(90deg, #1b2940 1px, transparent 1px),
+        #0d172a;
+    background-size: 25px 25px;
+    border: 2px solid #30435f;
+    border-radius: 15px;
+}
+
+#kotak {
+    display: none;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #fecdd3;
+    border-radius: 10px;
+    background: var(--red);
+    box-shadow: 0 0 20px #fb718566;
+    cursor: pointer;
+    z-index: 2;
+    touch-action: manipulation;
+}
+
+#kotak:hover {
+    background: #fda4af;
+}
+
+#overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    background: #080d1b66;
+}
+
+#overlay span {
+    font-size: 40px;
+}
+
+#pesan {
+    text-align: center;
+    color: var(--yellow);
+    margin-top: 15px;
+    min-height: 24px;
+    line-height: 1.6;
+}
+
+.result {
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.grade {
+    font-size: 54px;
+    font-weight: 900;
+    color: var(--yellow);
+    margin: 15px 0;
+}
+
+#namaHasil {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+#detailHasil {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.leader-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.leader-header p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+th {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #0b1324;
+}
+
+th,
+td {
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+td:first-child {
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+td:nth-child(2) {
+    font-weight: bold;
+}
+
+td:nth-child(4) {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.grade-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: var(--panel-light);
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 24px 8px;
+}
+
+.note {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    padding: 5px 10px 20px;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+
+    .stats {
+        gap: 7px;
+    }
+
+    .stat-card {
+        padding: 14px 5px;
+    }
+
+    .stat-card strong {
+        font-size: 22px;
+    }
+
+    .stat-card > span {
+        font-size: 9px;
+    }
+
+    #arena {
+        height: 300px;
+    }
+
+    #kotak {
+        width: 40px;
+        height: 40px;
+    }
+
+    th,
+    td {
+        padding: 12px 8px;
+    }
+}
